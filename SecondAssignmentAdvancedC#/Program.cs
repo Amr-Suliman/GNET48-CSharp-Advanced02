@@ -1,4 +1,5 @@
 ﻿using ShopMaster.OrderProcessing.Models;
+using SecondAssignmentAdvancedC_.Services;
 
 namespace SecondAssignmentAdvancedC_
 {
@@ -19,6 +20,17 @@ namespace SecondAssignmentAdvancedC_
                 new Product { Id=9, Name="Headphones", Category="Electronics", Price=150, Stock=40 },
                 new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
             };
+
+              List<Product> electronics = ProductService.SearchProducts(
+              catalog,
+              p => p.Category == "Electronics");
+
+            Console.WriteLine("=== Electronics ===");
+
+            foreach (Product product in electronics)
+            {
+                Console.WriteLine($"{product.Name} - ${product.Price}");
+            }
         }
     }
 }
