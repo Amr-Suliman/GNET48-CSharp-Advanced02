@@ -21,13 +21,24 @@ namespace SecondAssignmentAdvancedC_
                 new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
             };
 
-              List<Product> electronics = ProductService.SearchProducts(
-              catalog,
-              p => p.Category == "Electronics");
+            // Task 01 - Search Electronics
+            List<Product> electronics = ProductService.SearchProducts(
+            catalog,
+            p => p.Category == "Electronics");
 
             Console.WriteLine("=== Electronics ===");
 
             foreach (Product product in electronics)
+            {
+                Console.WriteLine($"{product.Name} - ${product.Price}");
+            }
+            // Task 01 - Search Products Under $50
+            List<Product> cheapProducts = ProductService.SearchProducts(
+            catalog,
+            p => p.Price < 50);
+
+            Console.WriteLine("=== Products Under $50 ===");
+            foreach (Product product in cheapProducts)
             {
                 Console.WriteLine($"{product.Name} - ${product.Price}");
             }
