@@ -32,7 +32,9 @@ namespace SecondAssignmentAdvancedC_
             {
                 Console.WriteLine($"{product.Name} - ${product.Price}");
             }
+
             // Task 01 - Search Products Under $50
+
             List<Product> cheapProducts = ProductService.SearchProducts(
             catalog,
             p => p.Price < 50);
@@ -42,6 +44,19 @@ namespace SecondAssignmentAdvancedC_
             {
                 Console.WriteLine($"{product.Name} - ${product.Price}");
             }
+
+            // Task 01 - Products In Stock
+            List<Product> inStockProducts = ProductService.SearchProducts(
+                catalog,
+                p => p.Stock > 0
+            );
+
+            Console.WriteLine("=== Products In Stock ===");
+            foreach (Product product in inStockProducts)
+            {
+                Console.WriteLine($"{product.Name} - Stock: {product.Stock}");
+            }
+
         }
     }
 }
