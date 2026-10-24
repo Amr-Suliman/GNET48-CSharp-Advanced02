@@ -57,6 +57,17 @@ namespace SecondAssignmentAdvancedC_
                 Console.WriteLine($"{product.Name} - Stock: {product.Stock}");
             }
 
+            // Task 01 - Clothing Under $100
+            List<Product> clothingProducts = ProductService.SearchProducts(
+                catalog,
+                p => p.Category == "Clothing" && p.Price < 100
+            );
+
+            Console.WriteLine("=== Clothing Under $100 ===");
+            foreach (Product product in clothingProducts)
+            {
+                Console.WriteLine($"{product.Name} - ${product.Price}");
+            }
         }
     }
 }
