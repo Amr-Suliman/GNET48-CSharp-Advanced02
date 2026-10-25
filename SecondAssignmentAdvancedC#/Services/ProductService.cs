@@ -23,5 +23,16 @@ namespace SecondAssignmentAdvancedC_.Services
 
             return result;
         }
+        public static void PrintReport(
+        List<Product> products,Action<Product> printer)
+        {
+            if (products is not null && printer is not null)
+            {
+                foreach (Product product in products)
+                {
+                    printer(product);
+                }
+            }
+        }
     }
 }
