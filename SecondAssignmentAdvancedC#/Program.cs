@@ -68,6 +68,20 @@ namespace SecondAssignmentAdvancedC_
             {
                 Console.WriteLine($"{product.Name} - ${product.Price}");
             }
+
+            Console.WriteLine("=== Short Report ===");
+
+            ProductService.PrintReport(
+                catalog,
+                p => Console.WriteLine($"{p.Name} - ${p.Price}")
+            );
+
+            Console.WriteLine("=== Detailed Report ===");
+
+            ProductService.PrintReport(
+                catalog,
+                p => Console.WriteLine($"Name: {p.Name}, Price: ${p.Price}, Category: {p.Category}, Stock: {p.Stock}")
+            );
         }
     }
 }
