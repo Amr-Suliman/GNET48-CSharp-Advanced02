@@ -39,8 +39,7 @@ namespace SecondAssignmentAdvancedC_
             catalog,
             p => p.Price < 50);
 
-            Console.WriteLine("\n=== Products Under $50 ===");
-
+            Console.WriteLine("=== Products Under $50 ===");
             foreach (Product product in cheapProducts)
             {
                 Console.WriteLine($"{product.Name} - ${product.Price}");
@@ -52,7 +51,7 @@ namespace SecondAssignmentAdvancedC_
                 p => p.Stock > 0
             );
 
-            Console.WriteLine("\n=== Products In Stock ===");
+            Console.WriteLine("=== Products In Stock ===");
             foreach (Product product in inStockProducts)
             {
                 Console.WriteLine($"{product.Name} - Stock: {product.Stock}");
@@ -64,20 +63,20 @@ namespace SecondAssignmentAdvancedC_
                 p => p.Category == "Clothing" && p.Price < 100
             );
 
-            Console.WriteLine("\n=== Clothing Under $100 ===");
+            Console.WriteLine("=== Clothing Under $100 ===");
             foreach (Product product in clothingProducts)
             {
                 Console.WriteLine($"{product.Name} - ${product.Price}");
             }
 
-            Console.WriteLine("\n=== Short Report ===");
+            Console.WriteLine("=== Short Report ===");
 
             ProductService.PrintReport(
                 catalog,
                 p => Console.WriteLine($"{p.Name} - ${p.Price}")
             );
 
-            Console.WriteLine("\n=== Detailed Report ===");
+            Console.WriteLine("=== Detailed Report ===");
 
             ProductService.PrintReport(
                 catalog,
@@ -85,16 +84,27 @@ namespace SecondAssignmentAdvancedC_
             );
 
             List<string> productSummaries = ProductService.TransformProducts(
-              catalog,
-               p => $"{p.Name} (${p.Price})");
+              catalog, p => $"{p.Name} (${p.Price})");
 
-            Console.WriteLine("\n=== Product Summaries ===");
+            Console.WriteLine("=== Product Summaries ===");
 
             foreach (string summary in productSummaries)
             {
                 Console.WriteLine(summary);
             }
 
+            // Task 03 - Price Labels
+            List<string> priceLabels = ProductService.TransformProducts(
+                catalog,
+                p => p.Price > 100 ? "Expensive!" : "Affordable"
+            );
+
+            Console.WriteLine("\n=== Price Labels ===");
+
+            foreach (string label in priceLabels)
+            {
+                Console.WriteLine(label);
+            }
         }
     }
 }
