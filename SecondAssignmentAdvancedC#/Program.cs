@@ -105,6 +105,18 @@ namespace SecondAssignmentAdvancedC_
             {
                 Console.WriteLine(label);
             }
+
+            // Task 03 - Low Stock Products
+            List<Product> lowStockProducts = ProductService.FilterProducts(
+                catalog,
+                p => p.Stock < 20
+            );
+
+            Console.WriteLine("\n=== Low Stock Alerts ===");
+            foreach (Product product in lowStockProducts)
+            {
+                Console.WriteLine($"[LOW STOCK] {product.Name}: only {product.Stock} left!");
+            }
         }
     }
 }
