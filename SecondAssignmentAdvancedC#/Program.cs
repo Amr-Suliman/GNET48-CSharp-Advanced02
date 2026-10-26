@@ -80,8 +80,31 @@ namespace SecondAssignmentAdvancedC_
 
             ProductService.PrintReport(
                 catalog,
-                p => Console.WriteLine($"Name: {p.Name}, Price: ${p.Price}, Category: {p.Category}, Stock: {p.Stock}")
+                p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}")
             );
+
+            List<string> productSummaries = ProductService.TransformProducts(
+              catalog, p => $"{p.Name} (${p.Price})");
+
+            Console.WriteLine("=== Product Summaries ===");
+
+            foreach (string summary in productSummaries)
+            {
+                Console.WriteLine(summary);
+            }
+
+            // Task 03 - Price Labels
+            List<string> priceLabels = ProductService.TransformProducts(
+                catalog,
+                p => p.Price > 100 ? "Expensive!" : "Affordable"
+            );
+
+            Console.WriteLine("\n=== Price Labels ===");
+
+            foreach (string label in priceLabels)
+            {
+                Console.WriteLine(label);
+            }
         }
     }
 }
