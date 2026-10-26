@@ -51,5 +51,25 @@ namespace SecondAssignmentAdvancedC_.Services
 
             return result;
         }
+
+        public static List<Product> FilterProducts(
+        List<Product> products,
+        Predicate<Product> predicate)
+        {
+            List<Product> result = new();
+
+            if (products is not null && predicate is not null)
+            {
+                foreach (Product product in products)
+                {
+                    if (predicate(product))
+                    {
+                        result.Add(product);
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }
