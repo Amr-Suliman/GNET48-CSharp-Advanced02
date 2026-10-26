@@ -34,5 +34,22 @@ namespace SecondAssignmentAdvancedC_.Services
                 }
             }
         }
+
+        public static List<string> TransformProducts(
+        List<Product> products,Func<Product, string> transformer)
+        {
+            List<string> result = new();
+
+            if (products is not null && transformer is not null)
+            {
+                foreach (Product product in products)
+                {
+                    string text = transformer(product);
+                    result.Add(text);
+                }
+            }
+
+            return result;
+        }
     }
 }
