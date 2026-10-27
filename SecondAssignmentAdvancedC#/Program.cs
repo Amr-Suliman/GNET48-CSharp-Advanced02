@@ -96,7 +96,7 @@ namespace SecondAssignmentAdvancedC_
             // Task 03 - Price Labels
             List<string> priceLabels = ProductService.TransformProducts(
                 catalog,
-                p => p.Price > 100 ? "Expensive!" : "Affordable"
+                p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}"
             );
 
             Console.WriteLine("\n=== Price Labels ===");
@@ -117,6 +117,8 @@ namespace SecondAssignmentAdvancedC_
             {
                 Console.WriteLine($"[LOW STOCK] {product.Name}: only {product.Stock} left!");
             }
+
+
         }
     }
 }
